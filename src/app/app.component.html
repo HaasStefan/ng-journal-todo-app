@@ -24,7 +24,11 @@
 <br />
 <br />
 
-<design-system-button label="Add Todo" (click)="addTodo()" [disabled]="!title || !description" />
+<design-system-button
+  label="Add Todo"
+  (click)="addTodo()"
+  [disabled]="!title || !description"
+/>
 
 <hr />
 <br />
@@ -34,8 +38,7 @@
 <ul>
   <ng-container *ngFor="let todo of todosSignal()">
     <li>
-      <b>{{ todo.title }}</b
-      >. {{ todo.description }}
+      {{ todo.title | concatenate : todo.description }}
     </li>
   </ng-container>
 </ul>

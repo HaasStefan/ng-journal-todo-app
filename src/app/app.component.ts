@@ -5,6 +5,7 @@ import {
   InputComponent,
   TitleComponent,
 } from 'ng-journal-todo-design-system';
+import { ConcatenatePipe } from './concatenate.pipe';
 
 interface Todo {
   title: string;
@@ -14,7 +15,13 @@ interface Todo {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, ButtonComponent, InputComponent, TitleComponent],
+  imports: [
+    CommonModule,
+    ButtonComponent,
+    InputComponent,
+    TitleComponent,
+    ConcatenatePipe,
+  ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
@@ -39,10 +46,7 @@ export class AppComponent {
       return;
     }
 
-    this.todosSignal.update((todos) => [
-      ...todos,
-      { title, description },
-    ]);
+    this.todosSignal.update((todos) => [...todos, { title, description }]);
 
     this.title = null;
     this.description = null;
